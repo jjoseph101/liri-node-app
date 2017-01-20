@@ -36,7 +36,7 @@ function doIt () {
 //function to display last twenty tweets
 function myTweets () {
 	client.get('favorites/list', function(error, tweets, response) {
-  		if(error) throw error;
+  		if (error) throw error;
   		console.log(JSON.stringify(tweets, null, 2));
   		fs.appendFile("log.txt", "\r\n-Ran command to display last twenty tweets");
 	});
@@ -44,9 +44,9 @@ function myTweets () {
 
 //function to display song info
 function mySpot (mediaInput) {
-	spotify.search({ type: 'track', query: mediaInput }, function(err, data) {
-    	if ( err ) {
-        	console.log('Error occurred: ' + err);
+	spotify.search({ type: 'track', query: mediaInput }, function(error, data) {
+    	if (error) {
+        	console.log('Error occurred: ' + error);
         	return;
     	}; 
     	console.log(JSON.stringify(data, null, 2));
