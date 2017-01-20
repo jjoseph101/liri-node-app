@@ -52,7 +52,6 @@ function myTweets () {
 
 //display song info
 function mySpot (mediaInput) {
-
 		spotify.search({ type: 'track', query: mediaInput }, function(err, data) {
 	    	if ( err ) {
 	        	console.log('Error occurred: ' + err);
@@ -97,4 +96,5 @@ function commandRead (commandType, mediaInput) {
 		return;
 }};
 
+//start everything
 commandRead(commandType, mediaInput);
