@@ -27,16 +27,6 @@ var client = new Twitter({
 var commandType = process.argv[2];
 var mediaInput = process.argv[3];
 
-//sanity checking
-console.log ("-----------------");
-console.log(consumerK);
-console.log(consumerS);
-console.log(atK);
-console.log(atS);
-console.log(commandType);
-console.log(mediaInput);
-console.log ("==================");
-
 //command execution
 function doIt (commandType) {
 	if (commandType==="do-what-it-says") {
