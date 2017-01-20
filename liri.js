@@ -8,12 +8,6 @@ var fs = require("fs");
 //initialize twitter keys file
 var keys = require("./keys.js");
 
-// //initialize twitter keys
-// var consumerK = keys.twitterKeys.consumer_key;
-// var consumerS = keys.twitterKeys.consumer_secret;
-// var atK = keys.twitterKeys.access_token_key;
-// var atS = keys.twitterKeys.access_token_secret;
-
 //initialize twitter keys
 var client = new Twitter({
   consumer_key: keys.twitterKeys.consumer_key,
@@ -46,7 +40,8 @@ function myTweets () {
 	  		if(error) throw error;
 	  		console.log(JSON.stringify(tweets, null, 2));
 	  		fs.appendFile("log.txt", "\r\nRan command to display last twenty tweets");
-		})};
+		});
+	};
 
 //display song info
 function mySpot (mediaInput) {
@@ -57,7 +52,8 @@ function mySpot (mediaInput) {
 	    	}; 
 	    	console.log(JSON.stringify(data, null, 2));
 	  		fs.appendFile("log.txt", "\r\nRan spotify for the following song: " + mediaInput);
-})};
+		});
+	};
 
 //display movie info
 function movieInfo (mediaInput) {
@@ -75,7 +71,7 @@ function movieInfo (mediaInput) {
 	    			fs.appendFile("log.txt", "\r\nRan OMDB for the following movie: Mr.Nobody");
 	  			};
 			});
-		}
+		};
 	};
 
 //command line arguments
@@ -93,7 +89,8 @@ function commandRead (commandType, mediaInput) {
 		console.log("You did not enter a correct preset command.  Please try again.");
 		fs.appendFile("log.txt", "\r\nUser did not enter in a correct command.");
 		return;
-}};
+	};
+};
 
 //start everything
 commandRead(commandType, mediaInput);
