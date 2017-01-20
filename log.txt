@@ -1,7 +1,6 @@
 
-Ran command to display last twenty tweets
-Ran spotify for the following song: lady in red
-Ran OMDB for the following movie: Mr.Nobody
-Ran OMDB for the following movie: Rocky
-Ran the spotify-this-song command on the following media: "I Want it That Way"
-Ran spotify for the following song: "I Want it That Way"
+-Ran OMDB for the following movie: Rainman
+-Ran OMDB for the following movie: Mr.Nobody
+-Ran command to display last twenty tweets
+-Ran spotify for the following song: blame it on the rain
+-Ran spotify for the following song: "I Want it That Way"
