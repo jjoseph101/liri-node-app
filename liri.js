@@ -47,6 +47,7 @@ function doIt (commandType) {
 	        commandType=commandTxt[0];
 	        mediaInput=commandTxt[1]; 
 	        commandRead(commandType, mediaInput);
+	        fs.appendFile("log.txt", "\r\nRan the " + commandType + " command on the following media: " + mediaInput);
 	     });  
 	};
 };
@@ -55,10 +56,10 @@ function doIt (commandType) {
 
 //display last twenty tweets
 function myTweets () {
-
 		client.get('favorites/list', function(error, tweets, response) {
 	  		if(error) throw error;
 	  		console.log(JSON.stringify(tweets, null, 2));
+	  		fs.appendFile("log.txt", "\r\nRan command to display last twenty tweets");
 		})};
 
 //display song info
@@ -70,6 +71,7 @@ function mySpot (mediaInput) {
 	        	return;
 	    	}; 
 	    	console.log(JSON.stringify(data, null, 2));
+	  		fs.appendFile("log.txt", "\r\nRan spotify for the following song: " + mediaInput);
 })};
 
 //display movie info
@@ -78,12 +80,14 @@ function movieInfo (mediaInput) {
 			request('http://www.omdbapi.com/?t='+mediaInput+'&y=&plot=full&r=json', function (error, response, body) {
 	  			if (!error && response.statusCode == 200) {
 	    			console.log(body);
+	    			fs.appendFile("log.txt", "\r\nRan OMDB for the following movie: " + mediaInput);
 	  			};
 			});
 		} else { //if movie title not entered return info for "Mr. Nobody"
 			request('http://www.omdbapi.com/?t=Mr.Nobody&y=&plot=full&r=json', function (error, response, body) {
 	  			if (!error && response.statusCode == 200) {
 	    			console.log(body);
+	    			fs.appendFile("log.txt", "\r\nRan OMDB for the following movie: Mr.Nobody");
 	  			};
 			});
 		}};
@@ -101,6 +105,7 @@ function commandRead (commandType, mediaInput) {
 	} else {
 		//invalid commands passed
 		console.log("You did not enter a correct preset command.  Please try again.");
+		fs.appendFile("log.txt", "User did not enter in a correct command.");
 		return;
 }};
 
