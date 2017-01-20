@@ -4,23 +4,22 @@ var Twitter = require("twitter");
 var spotify = require("spotify");
 var request = require("request");
 var fs = require("fs");
-var commandTxt = [];
 
 //initialize twitter keys file
 var keys = require("./keys.js");
 
-//initialize twitter keys
-var consumerK = keys.twitterKeys.consumer_key;
-var consumerS = keys.twitterKeys.consumer_secret;
-var atK = keys.twitterKeys.access_token_key;
-var atS = keys.twitterKeys.access_token_secret;
+// //initialize twitter keys
+// var consumerK = keys.twitterKeys.consumer_key;
+// var consumerS = keys.twitterKeys.consumer_secret;
+// var atK = keys.twitterKeys.access_token_key;
+// var atS = keys.twitterKeys.access_token_secret;
 
-//extra step to initialize twitter keys
+//initialize twitter keys
 var client = new Twitter({
-  consumer_key: consumerK,
-  consumer_secret: consumerS,
-  access_token_key: atK,
-  access_token_secret: atS
+  consumer_key: keys.twitterKeys.consumer_key,
+  consumer_secret: keys.twitterKeys.consumer_secret,
+  access_token_key: keys.twitterKeys.access_token_key,
+  access_token_secret: keys.twitterKeys.access_token_secret
 });
 
 //grab command-line argument
@@ -37,7 +36,6 @@ function doIt (commandType) {
 	        commandType=commandTxt[0];
 	        mediaInput=commandTxt[1]; 
 	        commandRead(commandType, mediaInput);
-	        fs.appendFile("log.txt", "\r\nRan the " + commandType + " command on the following media: " + mediaInput);
 	     });  
 	};
 };
@@ -77,7 +75,8 @@ function movieInfo (mediaInput) {
 	    			fs.appendFile("log.txt", "\r\nRan OMDB for the following movie: Mr.Nobody");
 	  			};
 			});
-		}};
+		}
+	};
 
 //command line arguments
 function commandRead (commandType, mediaInput) {
