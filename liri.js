@@ -51,7 +51,19 @@ if (commandType==="my-tweets") { //display last twenty tweets;
 	});
 
 } else if (commandType==="movie-this") { //display movie info;
-
+	if (typeof mediaInput !== 'undefined') { //if movie title entered
+		request('http://www.omdbapi.com/?t='+mediaInput+'&y=&plot=full&r=json', function (error, response, body) {
+  			if (!error && response.statusCode == 200) {
+    			console.log(body) // Show the HTML for omdb response. 
+  			};
+		});
+	} else { //if movie title not entered return info for "Mr. Nobody"
+		request('http://www.omdbapi.com/?t=Mr.Nobody&y=&plot=full&r=json', function (error, response, body) {
+  			if (!error && response.statusCode == 200) {
+    			console.log(body) // Show the HTML for omdb response. 
+  			};
+		});
+	};
 
 } else if (commandType==="do-what-it-says") { //do command in random.txt
 
