@@ -52,8 +52,6 @@ function doIt (commandType) {
 	};
 };
 
-
-
 //display last twenty tweets
 function myTweets () {
 		client.get('favorites/list', function(error, tweets, response) {
@@ -105,7 +103,7 @@ function commandRead (commandType, mediaInput) {
 	} else {
 		//invalid commands passed
 		console.log("You did not enter a correct preset command.  Please try again.");
-		fs.appendFile("log.txt", "User did not enter in a correct command.");
+		fs.appendFile("log.txt", "\r\nUser did not enter in a correct command.");
 		return;
 }};
 
