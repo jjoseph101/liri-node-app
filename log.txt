@@ -10,3 +10,9 @@
 -Ran command to display last twenty tweets
 -Ran spotify for the following song: "I Want it That Way"
 -Ran command to display last tweets
+-Ran command to display last tweets
+-Ran spotify for the following song: "I Want it That Way"
+-Ran spotify for the following song: straight up
+-Ran OMDB for the following movie: Mr.Nobody
+-Ran OMDB for the following movie: war games
+-User did not enter in a correct command.

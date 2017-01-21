@@ -20,21 +20,26 @@ var client = new Twitter({
 var commandType = process.argv[2];
 var mediaInput = process.argv[3];
 
-//function to read command line arguments
+
+//switch function to read command line arguments
 function commandRead (commandType, mediaInput) {
-	if (commandType=="my-tweets") {
-		myTweets();
-	} else if (commandType=="spotify-this-song") {
-		mySpot (mediaInput);
-	} else if (commandType=="movie-this") {
-		movieInfo (mediaInput);
-	} else if (commandType=="do-what-it-says") {
-		doIt (commandType);
-	} else {
-		//invalid commands passed
-		console.log("You did not enter a correct preset command.  Please try again.");
-		fs.appendFile("log.txt", "\r\n-User did not enter in a correct command.");
-		return;
+	switch (commandType) {
+		case "my-tweets":
+			myTweets ()
+			break
+		case "spotify-this-song":
+			mySpot (mediaInput)
+			break
+		case "movie-this":
+			movieInfo (mediaInput)
+			break
+		case "do-what-it-says":
+			doIt (commandType);
+			break
+		default:
+			fs.appendFile("log.txt", "\r\n-User did not enter in a correct command.");
+			console.log("Command Input not supported: " + commandType)
+			break
 	};
 };
 
