@@ -16,3 +16,12 @@
 -Ran OMDB for the following movie: Mr.Nobody
 -Ran OMDB for the following movie: war games
 -User did not enter in a correct command.
+-Ran command to display last tweets
+-Ran command to display last tweets
+-Ran command to display last tweets
+-Ran command to display last tweets
+-Ran command to display last tweets
+-Ran command to display last tweets
+-Ran command to display last tweets
+-Ran command to display last tweets
+-Ran command to display last tweets

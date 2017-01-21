@@ -20,7 +20,6 @@ var client = new Twitter({
 var commandType = process.argv[2];
 var mediaInput = process.argv[3];
 
-
 //switch function to read command line arguments
 function commandRead (commandType, mediaInput) {
 	switch (commandType) {
@@ -47,8 +46,11 @@ function commandRead (commandType, mediaInput) {
 function myTweets () {
 	client.get('statuses/user_timeline', function(error, tweets, response) {
   		if (error) throw error;
-  		console.log(JSON.stringify(tweets, null, 2));
+  		//console.log(JSON.stringify(tweets, null, 2));
   		fs.appendFile("log.txt", "\r\n-Ran command to display last tweets");
+  		for (j=0; j<20; j++) {
+  			console.log("Tweet #"+[20-j]+":"+tweets[j].text);
+  		};
 	});
 };
 
