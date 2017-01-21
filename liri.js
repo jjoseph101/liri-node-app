@@ -20,25 +20,30 @@ var client = new Twitter({
 var commandType = process.argv[2];
 var mediaInput = process.argv[3];
 
-//function to read command execution from file
-function doIt () {
-	fs.readFile("random.txt", "utf8", function(error, data){
-        console.log(data);
-        string=data;
-        commandTxt = string.split(",");
-        commandType=commandTxt[0];
-        mediaInput=commandTxt[1]; 
-        commandRead(commandType, mediaInput);
-    }); 
-
+//function to read command line arguments
+function commandRead (commandType, mediaInput) {
+	if (commandType=="my-tweets") {
+		myTweets();
+	} else if (commandType=="spotify-this-song") {
+		mySpot (mediaInput);
+	} else if (commandType=="movie-this") {
+		movieInfo (mediaInput);
+	} else if (commandType=="do-what-it-says") {
+		doIt (commandType);
+	} else {
+		//invalid commands passed
+		console.log("You did not enter a correct preset command.  Please try again.");
+		fs.appendFile("log.txt", "\r\n-User did not enter in a correct command.");
+		return;
+	};
 };
 
-//function to display last twenty tweets
+//function to display last tweets
 function myTweets () {
 	client.get('favorites/list', function(error, tweets, response) {
   		if (error) throw error;
   		console.log(JSON.stringify(tweets, null, 2));
-  		fs.appendFile("log.txt", "\r\n-Ran command to display last twenty tweets");
+  		fs.appendFile("log.txt", "\r\n-Ran command to display last tweets");
 	});
 };
 
@@ -73,22 +78,16 @@ function movieInfo (mediaInput) {
 	};
 };
 
-//function to read command line arguments
-function commandRead (commandType, mediaInput) {
-	if (commandType=="my-tweets") {
-		myTweets();
-	} else if (commandType=="spotify-this-song") {
-		mySpot (mediaInput);
-	} else if (commandType=="movie-this") {
-		movieInfo (mediaInput);
-	} else if (commandType=="do-what-it-says") {
-		doIt (commandType);
-	} else {
-		//invalid commands passed
-		console.log("You did not enter a correct preset command.  Please try again.");
-		fs.appendFile("log.txt", "\r\n-User did not enter in a correct command.");
-		return;
-	};
+//function to read from file to determine command execution
+function doIt () {
+	fs.readFile("random.txt", "utf8", function(error, data){
+        console.log(data);
+        string=data;
+        commandTxt = string.split(",");
+        commandType=commandTxt[0];
+        mediaInput=commandTxt[1]; 
+        commandRead(commandType, mediaInput);
+    });
 };
 
 //start everything
