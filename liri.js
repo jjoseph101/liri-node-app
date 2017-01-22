@@ -1,3 +1,5 @@
+//use strict
+"use strict";
 
 //initialize external libraries
 var Twitter = require("twitter");
@@ -24,21 +26,21 @@ var mediaInput = process.argv[3];
 function commandRead (commandType, mediaInput) {
 	switch (commandType) {
 		case "my-tweets":
-			myTweets ()
-			break
+			myTweets ();
+			break;
 		case "spotify-this-song":
-			mySpot (mediaInput)
-			break
+			mySpot (mediaInput);
+			break;
 		case "movie-this":
-			movieInfo (mediaInput)
-			break
+			movieInfo (mediaInput);
+			break;
 		case "do-what-it-says":
 			doIt (commandType);
-			break
+			break;
 		default:
 			fs.appendFile("log.txt", "\r\n-User did not enter in a correct command.");
-			console.log("Command Input not supported: " + commandType)
-			break
+			console.log("Command Input not supported: " + commandType);
+			break;
 	};
 };
 
@@ -46,51 +48,47 @@ function commandRead (commandType, mediaInput) {
 function myTweets () {
 	client.get('statuses/user_timeline', function(error, tweets, response) {
   		if (error) throw error;
-  		//console.log(JSON.stringify(tweets, null, 2));
   		fs.appendFile("log.txt", "\r\n-Ran command to display last tweets");
-  		for (j=0; j<20; j++) {
-  			console.log("Tweet #"+[20-j]+":"+tweets[j].text);
+  		for (var j=0; j<20; j++) {
+  			console.log("Tweet #" + [20-j] + ":" + tweets[j].text);
   		};
 	});
 };
 
 //function to display song info
 function mySpot (mediaInput) {
+	if (typeof mediaInput == 'undefined') {
+		mediaInput = "The Sign";
+	};
 	spotify.search({ type: 'track', query: mediaInput }, function(error, data) {
-    	if (error) {
-        	console.log('Error occurred: ' + error);
-        	return;
-    	}; 
-    	console.log(JSON.stringify(data, null, 2));
-  		fs.appendFile("log.txt", "\r\n-Ran spotify for the following song: " + mediaInput);
-	});
+	    	if (error) {
+	        	console.log('Error occurred: ' + error);
+	        	return;
+	    	}; 
+	    	console.log(JSON.stringify(data, null, 2));
+	  		fs.appendFile("log.txt", "\r\n-Ran spotify for the following song: " + mediaInput);
+		});
 };
 
 //function to display movie info
 function movieInfo (mediaInput) {
-	if (typeof mediaInput !== 'undefined') { //if movie title entered
-		request('http://www.omdbapi.com/?t='+mediaInput+'&y=&plot=full&r=json', function (error, response, body) {
-  			if (!error && response.statusCode == 200) {
-    			console.log(body);
-    			fs.appendFile("log.txt", "\r\n-Ran OMDB for the following movie: " + mediaInput);
-  			};
-		});
-	} else { //if movie title not entered return info for "Mr. Nobody"
-		request('http://www.omdbapi.com/?t=Mr.Nobody&y=&plot=full&r=json', function (error, response, body) {
-  			if (!error && response.statusCode == 200) {
-    			console.log(body);
-    			fs.appendFile("log.txt", "\r\n-Ran OMDB for the following movie: Mr.Nobody");
-  			};
-		});
+	if (typeof mediaInput == 'undefined') { //if movie title entered
+		mediaInput = "Mr.Nobody";
 	};
+	request('http://www.omdbapi.com/?t='+mediaInput+'&y=&plot=full&r=json', function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			console.log(body);
+			fs.appendFile("log.txt", "\r\n-Ran OMDB for the following movie: " + mediaInput);
+		};
+	});
 };
 
 //function to read from file to determine command execution
 function doIt () {
 	fs.readFile("random.txt", "utf8", function(error, data){
         console.log(data);
-        string=data;
-        commandTxt = string.split(",");
+        var string=data;
+        var commandTxt = string.split(",");
         commandType=commandTxt[0];
         mediaInput=commandTxt[1]; 
         commandRead(commandType, mediaInput);

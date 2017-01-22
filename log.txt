@@ -25,3 +25,27 @@
 -Ran command to display last tweets
 -Ran command to display last tweets
 -Ran command to display last tweets
+-Ran spotify for the following song: straight outta compton
+-Ran spotify for the following song: undefined
+-Ran spotify for the following song: straight outta compton
+-Ran OMDB for the following movie: undefined
+-Ran OMDB for the following movie: Mr.Nobody
+-Ran spotify for the following song: blame it on the rain
+-Ran spotify for the following song: blame it on the rain
+-Ran spotify for the following song: blame it on the rain
+-Ran spotify for the following song: blame it on the rain
+-Ran spotify for the following song: blame it on the rain
+-Ran spotify for the following song: blame it on the rain
+-Ran spotify for the following song: blame it on the rain
+-Ran spotify for the following song: blame it on the rain
+-Ran OMDB for the following movie: Mr.Nobody
+-Ran OMDB for the following movie: Mr.Nobody
+-Ran OMDB for the following movie: Mr.Nobody
+-Ran OMDB for the following movie: Mr.Nobody
+-Ran OMDB for the following movie: Mr.Nobody
+-Ran OMDB for the following movie: Mr.Nobody
+-Ran OMDB for the following movie: Rocky
+-Ran command to display last tweets
+-Ran spotify for the following song: Blame it on the Rain
+-Ran spotify for the following song: The Sign
+-Ran spotify for the following song: "I Want it That Way"
